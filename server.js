@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -7,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb+srv://dhanya098:Dh%40nya98@cluster0.fsckz8b.mongodb.net/?appName=Cluster0';
+const dbURI = process.env.MONGO_URI;
 
 mongoose.connect(dbURI, { tlsAllowInvalidCertificates: true })
   .then(() => console.log('Connected to MongoDB!'))
